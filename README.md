@@ -14,7 +14,7 @@ import (
 func main() {
     e := echo.New()
 
-    logger := lib.RequestLogger{"ERROR","test"}
+    logger := requestLogger.RequestLogger{"ERROR","test"}
 
     e.Use(logger.Log)
 
@@ -32,3 +32,8 @@ func main() {
 ### Log example:
 The log prints in json string format.  
 ```{"level":"error","service":"test","message":"Bad request","uri":"/bad?a=1","responseCode":400,"requestId":"23545"}```
+
+## TODO
+Add support to skip logging for certain apis
+Framework agnostic middleware
+Configurable log structure
