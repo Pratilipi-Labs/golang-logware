@@ -8,15 +8,15 @@ Request logging middleware for golang web services. Use this library to log the 
 import (
     "net/http"
     "github.com/labstack/echo"
-    "https://github.com/Pratilipi-Labs/golang-logware"
+    requestLogger "github.com/Pratilipi-Labs/golang-logware"
 )
 
 func main() {
     e := echo.New()
 
-    logger := lib.RequestLogger{"ERROR","test"}
-
-    e.Use(logger.Log)
+    e.Use(requestLogger.LoggerWithConfig(requestLogger.LoggerConfig{
+        Level: "info",
+    })) 
 
     e.GET("/", func(c echo.Context) error {
         return c.String(http.StatusOK, "Hello, World!")
