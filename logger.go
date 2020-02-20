@@ -107,7 +107,7 @@ func LoggerWithConfig(config LoggerConfig) echo.MiddlewareFunc {
 
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) (err error) {
-            var level = "info"
+            var level = "INFO"
             var log = false
 			req := c.Request()
 			res := c.Response()
@@ -216,7 +216,7 @@ func LoggerWithConfig(config LoggerConfig) echo.MiddlewareFunc {
 				return
 			}
 
-            if config.Level == "info" || (config.Level == "error" && res.Status >= 400) {
+            if config.Level == "INFO" || (config.Level == "ERROR" && res.Status >= 400) {
                 log = true
             }
 
